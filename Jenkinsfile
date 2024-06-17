@@ -1,23 +1,22 @@
 
 pipeline {
      agent {
-        label 'clients'
+        label 'windows'
      }  
     stages {
-        stage('Build') {
+        stage('version') {
             steps {
-                echo 'This is from Build'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'This is from Test'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'This is from Deploy'
-            }
-        }
-    }
+				sh 'pwsh --version'
+			}
+		}
+	
+    
+		stages {
+			stage('hello.ps1') {
+				steps {
+					sh 'pwsh hello.ps1'
+				}
+			}
+		}
+	}
 }
